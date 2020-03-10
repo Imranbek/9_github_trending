@@ -16,6 +16,7 @@ def main():
         owner_login = repository['owner']['login']
         repo_name = repository['name']
         repo_url = repository['url']
+        repo_stars = repository['stargazers_count']
         repo_issues = get_issues(
             repo_owner=owner_login,
             repo_name=repo_name)
@@ -24,16 +25,20 @@ def main():
         print_repo_information_with_issues_amount(
             repo_name=repo_name,
             repo_url=repo_url,
-            open_issues_amount=open_issues_amount)
+            open_issues_amount=open_issues_amount,
+            stars=repo_stars)
 
 
 def print_repo_information_with_issues_amount(repo_name: str,
                                               repo_url: str,
-                                              open_issues_amount: int):
+                                              open_issues_amount: int,
+                                              stars: int):
     print('Repository name: {}\n'
           'Repository url: {}\n'
+          'Stars rating: {}\n'
           'Open issues: {}'.format(repo_name,
                                    repo_url,
+                                   str(stars),
                                    str(open_issues_amount)))
 
     print('--------------------')
